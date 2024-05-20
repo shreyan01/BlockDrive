@@ -14,7 +14,8 @@ app.post('/upload', async (req, res) => {
         const file = req.body.file;
         const addedFile = await ipfs.add(file);
         res.send({ hash: addedFile.path });
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).send(error.toString());
     }
 });

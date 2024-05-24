@@ -1,4 +1,4 @@
-const FileStorage = artifacts.require("FileStorage");
+const DecentralStore = artifacts.require("DecentralStore");
 
 module.exports = function (deployer) {
   deployer.deploy(FileStorage);

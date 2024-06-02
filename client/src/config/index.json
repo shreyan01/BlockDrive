@@ -30,7 +30,7 @@
     "title": "Welcome to BlockDrive",
     "subtitle": "Your Trusted Blockchain based file manager",
     "description": "Enhance your file management and storage experience with BlockDrive. BlockDrive leverages blockchain technology in order to efficiently store and manage your files.",
-    "img": "/assets/images/happyTeam.jpeg",
+    "img": "/assets/images/mockup.png",
     "primaryAction": {
       "text": "Get started",
       "href": "#"

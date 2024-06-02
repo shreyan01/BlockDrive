@@ -29,7 +29,7 @@
   "mainHero": {
     "title": "Welcome to BlockDrive",
     "subtitle": "Your Trusted Blockchain based file manager",
-    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "description": "Enhance your file management and storage experience with BlockDrive. BlockDrive leverages blockchain technology in order to efficiently store and manage your files.",
     "img": "/assets/images/happyTeam.jpeg",
     "primaryAction": {
       "text": "Get started",

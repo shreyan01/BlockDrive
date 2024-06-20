@@ -12,11 +12,11 @@ import Product from '../components/Product';
 
 const App = () => {
   return (
-    <div className={`bg-background grid gap-y-16 overflow-hidden`}>
-      <div className={`relative bg-background`}>
+    <div className={` grid gap-y-16 overflow-hidden bg-[#e6e6dd]`}>
+      <div className={`relative bg-[#e6e6dd]`}>
         <div className="max-w-7xl mx-auto">
           <div
-            className={`relative z-10 pb-8 bg-background sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32`}
+            className={`relative z-10 pb-8 bg-[#e6e6dd] sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32`}
           >
             <Header />
             <MainHero />

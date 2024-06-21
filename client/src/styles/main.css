@@ -6,15 +6,15 @@
 :root {
   --color-primary: #40dfaf;
   --color-secondary: #5fffca;
-  --color-tertiaty: #99a0a3;
+  --color-tertiaty: #99a3a2;
 }
 
 a { 
-  @apply text-red-700;
+  @apply text-green-400;
 }
 
 a:hover {
-  @apply border-b-2 border-red-700;
+  @apply border-b-2 border-green-400;
 }
 
 

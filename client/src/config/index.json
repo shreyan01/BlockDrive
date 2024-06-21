@@ -27,9 +27,9 @@
     "href": "#"
   },
   "mainHero": {
-    "title": "Welcome to BlockDrive",
+    "title": "Welcome to DatSilo",
     "subtitle": "Your Trusted Blockchain based file manager",
-    "description": "Enhance your file management and storage experience with BlockDrive. BlockDrive leverages blockchain technology in order to efficiently store and manage your files.",
+    "description": "Enhance your file management and storage experience with DatSilo. BlockDrive leverages blockchain technology in order to efficiently store and manage your files.",
     "img": "/assets/images/mockup.png",
     "primaryAction": {
       "text": "Get started",

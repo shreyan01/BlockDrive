@@ -28,8 +28,8 @@
   },
   "mainHero": {
     "title": "Welcome to DatSilo",
-    "subtitle": "Your Trusted Blockchain based file manager",
-    "description": "Enhance your file management and storage experience with DatSilo. BlockDrive leverages blockchain technology in order to efficiently store and manage your files.",
+    "subtitle": "Your Trusted, Security-Oriented, and Serverless File Manager",
+    "description": "Enhance your file management and storage experience with DatSilo. DatSilo leverages cryptographic technology in order to efficiently store and manage your files.",
     "img": "/assets/images/mockup.png",
     "primaryAction": {
       "text": "Get started",
@@ -41,17 +41,17 @@
     }
   },
   "product": {
-    "title": "BlockDrive: Blockchain powered file management",
+    "title": "DatSilo: Security-powered file management",
     "items": [
       {
         "title": "Store your files in ways never before",
-        "description": "Just edit the config.json file with details about your company and voila your beautiful state of the art landing page is ready to go live! Remember to also update your assets, add any images you want to show to /assets/images and link them in the config.json",
-        "img": "/assets/images/product1.jpg"
+        "description": "DatSilo believes in reaping what you sow. What we sow here is the files and what we sow here is their efficient management without the need of big bulky data servers because all we need is users to let it be how it is.",
+        "img": "/assets/images/figure1.png"
       },
       {
         "title": "Make it your own and make it secure!",
         "description": "Play around with the theme.ts file and configure the color palette to match the branding of your company! If you're feeling wild, maybe change some tailwind css as well!",
-        "img": "/assets/images/product2.jpg"
+        "img": "/assets/images/figure2.png"
       }
     ]
   },

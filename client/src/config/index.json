@@ -58,7 +58,7 @@
   "features": {
     "title": "Latest & greatest ",
     "subtitle": "All the best technologies out there!",
-    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "description": "DatSilo uses latest and best complex technologies and techniques to keep your file storage efficient and secure.",
     "items": [
       {
         "name": "React.js",
@@ -92,7 +92,7 @@
         "features": [
           "1 user",
           "Basic Support",
-          "1 GB of storage",
+          "10 GB of storage",
           "Email support"
         ]
       },
@@ -104,18 +104,18 @@
         "features": [
           "5 users",
           "Priority Support",
-          "10 GB of storage",
+          "500 GB of storage",
           "Phone and Email support"
         ]
       },
       {
         "name": "Enterprise",
-        "price": "$29",
+        "price": "$50",
         "priceDetails": "per user",
         "features": [
           "50 users",
           "24/7 Support",
-          "100 GB of storage",
+          "1 TB of storage",
           "Phone and Email support"
         ]
       }

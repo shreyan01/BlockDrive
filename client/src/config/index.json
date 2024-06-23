@@ -61,24 +61,24 @@
     "description": "DatSilo uses latest and best complex technologies and techniques to keep your file storage efficient and secure.",
     "items": [
       {
-        "name": "React.js",
-        "description": "React is a free and open-source front-end JavaScript library for building user interfaces or UI components.",
-        "icon": "/assets/images/react.png"
+        "name": "Secure",
+        "description": "DatSilo encrypts all your files before storing them and decrypts only when you require them again.",
+        "icon": "/assets/images/Encryption.png"
       },
       {
-        "name": "Tailwind",
-        "description": "Tailwind CSS is a highly customizable, low-level CSS framework for quickly creating beautiful designs without any annoying opinionated stylesheet nonsense.",
-        "icon": "/assets/images/tailwindcss.svg"
+        "name": "Chunking",
+        "description": "DatSilo chunks all your files, spreading them out evenly before storing them. This increases your file security more than any other platform can offer.",
+        "icon": "/assets/images/Chunking.png"
       },
       {
-        "name": "Next.js",
-        "description": "Next.js is a framework for server-rendered React applications using Next.js.",
-        "icon": "/assets/images/nextjs.svg"
+        "name": "Serverless because we got better connectivity",
+        "description": "DatSilo does not need server storage. Our users are made to be in an inclusive platform that results in a serverless storage system.",
+        "icon": "/assets/images/Connectivity.png"
       },
       {
-        "name": "Typescript",
-        "description": "TypeScript is a programming language developed and maintained by Microsoft.",
-        "icon": "/assets/images/ts.png"
+        "name": "24/7 Customer Support",
+        "description": "DatSilo offers 24/7 efficient customer support that can be accessed anytime, anywhere.",
+        "icon": "/assets/images/Support.png"
       }
     ]
   },

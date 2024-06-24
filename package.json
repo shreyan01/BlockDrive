@@ -2,6 +2,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.2",
     "@truffle/hdwallet-provider": "^2.1.15",
+    "bun": "^1.1.16",
     "express": "^4.19.2",
     "ipfs-http-client": "^60.0.1",
     "package.json": "^2.0.1",

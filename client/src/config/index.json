@@ -24,7 +24,7 @@
   ],
   "callToAction": {
     "text": "Get started",
-    "href": "#"
+    "href": ""
   },
   "mainHero": {
     "title": "Welcome to DatSilo",
@@ -33,7 +33,7 @@
     "img": "/assets/images/mockup.png",
     "primaryAction": {
       "text": "Get started",
-      "href": "#"
+      "href": "/Dashboard"
     },
     "secondaryAction": {
       "text": "Email us",

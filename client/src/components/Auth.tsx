@@ -1,43 +1,59 @@
-import { useState } from 'react'
-import { useSupabaseClient } from '@supabase/auth-helpers-react'
+// components/Auth.tsx
+import { useState } from 'react';
+import { supabase } from '../utils/supabase';
 
-export default function Auth() {
-  const supabase = useSupabaseClient()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+const Auth = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const { error } = await supabase.auth.signUp({ email, password })
-    if (error) console.error('Error signing up:', error.message)
-  }
+  const handleSignUp = async () => {
+    setLoading(true);
+    setError('');
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+    if (error) setError(error.message);
+    setLoading(false);
+  };
 
-  const handleSignIn = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) console.error('Error signing in:', error.message)
-  }
+  const handleSignIn = async () => {
+    setLoading(true);
+    setError('');
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) setError(error.message);
+    setLoading(false);
+  };
 
   return (
     <div>
-      <form onSubmit={handleSignUp}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-      <form onSubmit={handleSignIn}>
-        <button type="submit">Sign In</button>
-      </form>
+      <h2>Auth</h2>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <button onClick={handleSignUp} disabled={loading}>
+        Sign Up
+      </button>
+      <button onClick={handleSignIn} disabled={loading}>
+        Sign In
+      </button>
+      {error && <p>{error}</p>}
     </div>
-  )
-}
+  );
+};
+
+export default Auth;

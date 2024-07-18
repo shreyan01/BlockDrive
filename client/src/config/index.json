@@ -24,7 +24,7 @@
   ],
   "callToAction": {
     "text": "Get started",
-    "href": "/../src/pages/auth.tsx"
+    "href": "/login.tsx"
   },
   "mainHero": {
     "title": "Welcome to DatSilo",
@@ -33,11 +33,11 @@
     "img": "/assets/images/mockup.png",
     "primaryAction": {
       "text": "Get started",
-      "href": "/Dashboard"
+      "href": "/login"
     },
     "secondaryAction": {
       "text": "Email us",
-      "href": "mailto:shreyanshukla19@gmail.com?subject=I like react landing page!"
+      "href": "mailto:shreyanshukla19@gmail.com?subject=Contacting Regarding DatSilo!"
     }
   },
   "product": {

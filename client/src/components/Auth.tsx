@@ -31,27 +31,44 @@ const Auth = () => {
   };
 
   return (
-    <div>
-      <h2>Auth</h2>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-      <button onClick={handleSignUp} disabled={loading}>
-        Sign Up
-      </button>
-      <button onClick={handleSignIn} disabled={loading}>
-        Sign In
-      </button>
-      {error && <p>{error}</p>}
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-6">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden p-6">
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-4">DatSilo Sign-in</h2>
+        <div className="space-y-4">
+          {error && <div className="text-red-500 text-center">{error}</div>}
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+          <div className="flex justify-between items-center">
+            <button
+              onClick={handleSignIn}
+              className="w-full py-2 px-4 bg-primary text-white rounded-lg hover:bg-indigo-500 transition duration-300 ease-in-out"
+            >
+              {loading ? 'Signing in...' : 'Sign In'}
+            </button>
+          </div>
+          <div className="text-center text-gray-500 mt-4">
+            Don't have an account?{' '}
+            <span
+              onClick={handleSignUp}
+              className="text-primary cursor-pointer hover:underline"
+            >
+              Sign Up
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

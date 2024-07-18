@@ -24,7 +24,7 @@
   ],
   "callToAction": {
     "text": "Get started",
-    "href": ""
+    "href": "/../src/pages/auth.tsx"
   },
   "mainHero": {
     "title": "Welcome to DatSilo",

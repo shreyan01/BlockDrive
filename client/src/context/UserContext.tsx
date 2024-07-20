@@ -1,7 +1,7 @@
 // context/UserContext.tsx
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { supabase } from '../utils/supabase';
-import { User } from '@supabase/supabase-js'; // Import the User type from supabase-js
+import { User } from '@supabase/supabase-js';
 
 interface UserContextType {
   user: User | null;
@@ -21,7 +21,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     getUser();
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (event, session) => {
         setUser(session?.user ?? null);
       }
     );

@@ -30,7 +30,7 @@ const SignUp = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-6">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden p-6">
-        <h2 className="text-2xl font-bold text-center text-gray-700 mb-4">Sign Up</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-4"> DatSilo Sign Up</h2>
         <div className="space-y-4">
           {error && <div className="text-red-500 text-center">{error}</div>}
           <input

@@ -1,13 +1,15 @@
 // components/Auth.tsx
 import { useState } from 'react';
 import { supabase } from '../utils/supabase';
-import Link from 'next/link'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('')
+  const router=useRouter();
 
   const handleSignIn = async () => {
     setLoading(true);
@@ -16,7 +18,12 @@ const Auth = () => {
       email,
       password,
     });
-    if (error) setError(error.message);
+    if (error) {
+      setError(error.message);
+    } else {
+      router.push('/dashboard'); // Redirect to dashboard
+    }
+    
     setLoading(false);
   };
 

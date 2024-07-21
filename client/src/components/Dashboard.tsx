@@ -31,8 +31,8 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className='flex flex-col bg-background h-screen'>
+      <h1 className='text-4xl font-bold text-primary'>DatSilo</h1>
       <input type="file" multiple onChange={handleFileChange} />
       <button onClick={handleFileUpload}>Upload</button>
       <h2>Uploaded Files</h2>

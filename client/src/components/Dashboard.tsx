@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DashNavbar from './dashboardNavbar';
 
 // Define a type for the uploaded files
 interface FileData {
@@ -32,6 +33,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className='flex flex-col bg-background h-screen'>
+      <DashNavbar/>
       <h1 className='text-4xl font-bold text-primary'>DatSilo</h1>
       <input type="file" multiple onChange={handleFileChange} />
       <button onClick={handleFileUpload}>Upload</button>

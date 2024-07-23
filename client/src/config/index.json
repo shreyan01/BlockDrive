@@ -24,7 +24,7 @@
   ],
   "callToAction": {
     "text": "Get started",
-    "href": "/login.tsx"
+    "href": "/login"
   },
   "mainHero": {
     "title": "Welcome to DatSilo",

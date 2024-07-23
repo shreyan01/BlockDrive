@@ -1,6 +1,6 @@
 // components/Navbar.tsx
 'use client'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { supabase } from '../utils/supabase';
 import { useRouter } from 'next/router';
 
@@ -23,12 +23,13 @@ const DashNavbar = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push('/auth');
+    router.push('/login');
   };
 
   return (
     <nav className="bg-background p-4 flex justify-between items-center">
-      <div className="text-primary font-bold">DatSilo</div>
+      <div className="text-primary font-bold text-2xl p-0 mt-0">DatSilo</div>
+      <input type="search" placeholder='Search..' className='rounded-lg m-2 p-2 focus:outline-none focus:ring-2 focus:ring-primary' />
       <div className="flex items-center space-x-4">
         {username && <span className="text-primary">Welcome, {username}</span>}
         <button

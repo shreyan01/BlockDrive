@@ -1,13 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DashNavbar from './dashboardNavbar';
 import Sidebar from './Sidebar';
-
-// Define a type for the uploaded files
-interface FileData {
-  name: string;
-  size: number;
-  type: string;
-}
 
 const Dashboard: React.FC = () => {
   return (

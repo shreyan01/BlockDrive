@@ -16,7 +16,7 @@ const SearchBar = () => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search..."
+        placeholder="Search your files..."
         className="w-full bg-transparent border-none rounded-2xl m-1 p-2 focus:outline-none focus:ring-2 focus:ring-primary"
       />
       <button

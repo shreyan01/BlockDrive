@@ -1,9 +1,12 @@
 import React, {useState} from "react"
-import { FiPlus } from "react-icons/fi";
+import { FiPlus, FiFolder, FiFilePlus, FiFolderPlus } from "react-icons/fi";
 const DropDown=()=>{
     const [isOpen, SetIsOpen]=useState(false);
     const toggleDropDown=()=>{
         SetIsOpen(!isOpen);
+    }
+    const handleUpload=()=>{
+        
     }
     return(
         <div className="flex flex-col items-center bg-background1 shadow-md w-2/3 m-8 rounded-lg hover:bg-background">
@@ -16,30 +19,24 @@ const DropDown=()=>{
                 aria-labelledby="menu-button"
                 >
                 <div className="py-1" role="none">
+                    <div className="px-4 py-2 text-sm text-primary hover:bg-background flex flex-row items-center justify-center p-2">
+                    <FiFolder/>
+                    <button className="p-2">Folder</button>
+                    </div>
+                    <div className="px-4 py-2 text-sm text-primary hover:bg-background flex flex-row items-center justify-center">
+                        <FiFilePlus/><button onClick={handleUpload} className="p-2">Upload File</button>
+                    </div>
                     <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-primary hover:bg-background"
+                    className="flex px-4 py-2 text-sm text-primary hover:bg-background items-center justify-center"
                     role="menuitem"
                     >
-                    Folder
+                    <FiFolderPlus/>
+                    <button className="p-2">Upload Folder</button>
                     </a>
                     <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-primary hover:bg-background"
-                    role="menuitem"
-                    >
-                    Upload File
-                    </a>
-                    <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-primary hover:bg-background"
-                    role="menuitem"
-                    >
-                    Upload Folder
-                    </a>
-                    <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-primary hover:bg-background"
+                    className="flex px-4 py-2 text-sm text-primary hover:bg-background items-center justify-center flex-row"
                     role="menuitem"
                     >
                     Google Docs

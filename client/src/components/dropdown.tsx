@@ -43,7 +43,7 @@ const DropDown=()=>{
                     className="flex px-4 py-2 text-sm text-primary hover:bg-background items-center justify-center flex-row"
                     role="menuitem"
                     >
-                    Google Docs
+                    Docs
                     </a>
                 </div>
                 </div>

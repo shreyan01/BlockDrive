@@ -16,5 +16,5 @@ export default async function POST(req:NextApiRequest, res: NextApiResponse){
     catch(error){
         console.error('Upload failed: ', error);
         res.status(500).json({error: 'Upload Failed'});
-    }
+    
 }

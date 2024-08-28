@@ -16,12 +16,15 @@
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
+    "@supabase/supabase-js": "^2.45.2",
+    "azure": "^2.3.1-preview",
     "framer-motion": "^5.0.0",
     "next": "^13.0.0",
     "next-seo": "^4.28.1",
     "package.json": "^2.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-icons": "^5.3.0",
     "react-scroll": "^1.8.4",
     "smooth-scroll": "^16.1.3",
     "styled-jsx-plugin-postcss": "^4.0.1"
@@ -51,8 +54,9 @@
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
+    "supabase": "^1.191.3",
     "tailwindcss": "^2.2.17",
-    "typescript": "^4.4.4"
+    "typescript": "^5.5.4"
   },
   "license": "ISC"
 }

@@ -1,14 +1,39 @@
-// lib/azureBlobClient.ts
-import { BlobServiceClient } from '@azure/storage-blob';
+// utils/azureBlob.ts
 
-const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING || '';
+import { BlobServiceClient} from "@azure/storage-blob";
 
-if (!AZURE_STORAGE_CONNECTION_STRING) {
-  throw new Error('Azure Storage connection string is missing.');
-}
+const getBlobServiceClient = (): BlobServiceClient => {
+  const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+  if (!connectionString) {
+    throw new Error("Azure Storage connection string is not defined.");
+  }
+  return BlobServiceClient.fromConnectionString(connectionString);
+};
 
-const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+export const uploadFileToBlob = async (fileBuffer: Buffer, fileName: string, fileType: string): Promise<string> => {
+  const blobServiceClient = getBlobServiceClient();
+  const containerName = 'datsilo';
 
-export const getBlobContainerClient = (containerName: string) => {
-  return blobServiceClient.getContainerClient(containerName);
+  if (!containerName) {
+    throw new Error("Azure Storage container name is not defined.");
+  }
+
+  const containerClient = blobServiceClient.getContainerClient(containerName);
+
+  // Ensure the container exists
+  await containerClient.createIfNotExists({
+    access: 'container', // Set access level as needed
+  });
+
+  const blobClient = containerClient.getBlockBlobClient(fileName);
+
+  const options = {
+    blobHTTPHeaders: {
+      blobContentType: fileType,
+    },
+  };
+
+  await blobClient.uploadData(fileBuffer, options);
+
+  return blobClient.url;
 };

@@ -1,19 +1,24 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { getBlobContainerClient } from "../../utils/azureBlobClient";
-import { nanoid } from "nanoid";
+import { BlobServiceClient } from '@azure/storage-blob';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const containerName='datsilo'
+export default async function POST(req:NextApiRequest, res:NextApiResponse) {
+    try {
+      const { base64File,fileName, contentType  } = req.body;
 
-export default async function POST(req:NextApiRequest, res: NextApiResponse){
-    try{
-        const {file}=req.body;
-        const containerClient=getBlobContainerClient(containerName)
-        const blobName=`${nanoid()}-${file.name}`;
-        const blockBlobClient=containerClient.getBlockBlobClient(blobName);
-        res.status(200).json({message: 'File uploaded successfully!', blobUrl: blockBlobClient.url});
-    }
-    catch(error){
-        console.error('Upload failed: ', error);
-        res.status(500).json({error: 'Upload Failed'});
+      const storageAccount = 'datsilo';
+      const containerName = 'datsilo';
+      const accessKey = process.env.AZURE_BLOB_STORAGE_ACCESS_KEY!;
+      const connectionString = process.env.AZURE_BLOB_STORAGE_CONNECTION_STRING!;
+
+      const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
+      const containerClient = blobServiceClient.getContainerClient(containerName);
+      const filename = `${Date.now()}-${fileName}}`;
+      const imageBuffer = Buffer.from(base64File, 'base64');
+      const blockBlobClient = containerClient.getBlockBlobClient(filename);
+      await blockBlobClient.uploadData(imageBuffer, { blobHTTPHeaders: { blobContentType:contentType || 'application/octet-stream'} });
+
+      res.status(200).json({ message: 'Image uploaded successfully' });
+    } catch (error) {
+      res.status(500).json({ error: 'Error occured' });
     }
 }

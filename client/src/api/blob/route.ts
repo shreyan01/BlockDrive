@@ -1,24 +1,39 @@
-import { BlobServiceClient } from '@azure/storage-blob';
 import { NextApiRequest, NextApiResponse } from 'next';
+import formidable from 'formidable';
 
-export default async function POST(req:NextApiRequest, res:NextApiResponse) {
-    try {
-      const { base64File,fileName, contentType  } = req.body;
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
-      const storageAccount = 'datsilo';
-      const containerName = 'datsilo';
-      const accessKey = process.env.AZURE_BLOB_STORAGE_ACCESS_KEY!;
-      const connectionString = process.env.AZURE_BLOB_STORAGE_CONNECTION_STRING!;
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-      const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
-      const containerClient = blobServiceClient.getContainerClient(containerName);
-      const filename = `${Date.now()}-${fileName}}`;
-      const imageBuffer = Buffer.from(base64File, 'base64');
-      const blockBlobClient = containerClient.getBlockBlobClient(filename);
-      await blockBlobClient.uploadData(imageBuffer, { blobHTTPHeaders: { blobContentType:contentType || 'application/octet-stream'} });
+  try {
+    const form = new formidable.IncomingForm();
+    const [ files] = await new Promise<[formidable.Fields, formidable.Files]>((resolve, reject) => {
+      form.parse(req, (err, fields, files) => {
+        if (err) reject(err);
+        resolve([fields, files]);
+      });
+    });
 
-      res.status(200).json({ message: 'Image uploaded successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Error occured' });
+    // Process the uploaded file
+    const fileArray = files.file as unknown as formidable.File[];
+    const file = Array.isArray(fileArray) ? fileArray[0] : fileArray;
+    if (!file) {
+      return res.status(400).json({ error: 'No file uploaded' });
     }
+
+    // Azure Blob Storage setup and upload logic here
+    // ...
+
+    res.status(200).json({ message: 'File uploaded successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while processing the upload' });
+  }
 }

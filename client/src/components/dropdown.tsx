@@ -12,23 +12,30 @@ const DropDown = () => {
 
     const handleFileUpload = async () => {
         if (selectedFile) {
-            try {
-                const formData = new FormData();
-                formData.append('file', selectedFile);
+          try {
+            const reader = new FileReader();
+            reader.readAsDataURL(selectedFile);
+            reader.onloadend = async () => {
+              if (reader.result && typeof reader.result === 'string') {
+                const base64File = reader.result.split(',')[1];
+                
+                // Log file content and name to verify correct data is being sent
+                console.log('File content (base64):', base64File);
+                console.log('File name:', selectedFile.name);
 
-                const response = await axios.post('http://localhost:3000/api/blob', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
+                await axios.post('/api/blob', {
+                  fileContent: base64File,
+                  fileName: selectedFile.name,
                 });
-
-                console.log('File uploaded successfully', response.data);
-                setSelectedFile(null); // Reset selected file after successful upload
-            } catch (error) {
-                console.error('Error uploading file:', error);
-            }
+              } else {
+                console.error('Failed to read file');
+              }
+            };
+          } catch (error) {
+            console.error('Error uploading file:', error);
+          }
         }
-    };
+      };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;

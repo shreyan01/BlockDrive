@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { FiPlus, FiFolder, FiFilePlus, FiFolderPlus } from "react-icons/fi";
-import axios from "axios";
 
 const DropDown = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,30 +9,31 @@ const DropDown = () => {
         setIsOpen(!isOpen);
     }
 
-    const handleFileUpload = async () => {
-        if (selectedFile) {
-          try {
-            const reader = new FileReader();
-            reader.readAsDataURL(selectedFile);
-            reader.onloadend = async () => {
-              if (reader.result && typeof reader.result === 'string') {
-                const base64File = reader.result.split(',')[1];
-                
-                // Log file content and name to verify correct data is being sent
-                console.log('File content (base64):', base64File);
-                console.log('File name:', selectedFile.name);
+    const handleFileUpload = async (data:any) => {
+      {
 
-                await axios.post('/api/blob', {
-                  fileContent: base64File,
-                  fileName: selectedFile.name,
-                });
-              } else {
-                console.error('Failed to read file');
-              }
-            };
-          } catch (error) {
-            console.error('Error uploading file:', error);
-          }
+        const response = await fetch('/api/blob', {
+        
+        method: 'POST',
+        
+        body: data,
+        
+        });
+        
+        
+        
+        
+        if (!response.ok) {
+        
+        throw new Error('Failed to upload to Azure Blob Storage');
+        
+        }
+        
+        
+        
+        
+        return response.json();
+        
         }
       };
 

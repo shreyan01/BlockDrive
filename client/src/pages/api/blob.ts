@@ -24,8 +24,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
   
   // Create a blob (file) name
   
-  const blobName = 'datsilo';
-  
+  const blobName = req.body.file.name;
   const blockBlobClient = containerClient.getBlockBlobClient(blobName);
   
   

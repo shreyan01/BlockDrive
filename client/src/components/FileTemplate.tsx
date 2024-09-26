@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FaFilePdf, FaFileWord } from 'react-icons/fa';
 
 export const getFileLogo = (fileName: string): JSX.Element => {
@@ -15,14 +14,14 @@ export const getFileLogo = (fileName: string): JSX.Element => {
     }
 }
 
-const FileTemplate=()=>{
-    const [file] = useState("abc.docx"); // Assuming file name is dynamically set or passed as a prop
-    const logoSrc=getFileLogo(file);
-    return(
+const FileTemplate = ({ fileName }: { fileName: string }) => { // Accept fileName as prop
+    const logoSrc = getFileLogo(fileName);
+    return (
         <div className="flex flex-col m-4 p-2 w-1/12 h-1/6 shadow-md">
             {logoSrc}
-            <p className="text-sm font-bold">{file}</p>
+            <p className="text-sm font-bold">{fileName}</p> {/* Display the file name */}
         </div>
-    )
+    );
 }
-export default FileTemplate
+
+export default FileTemplate;

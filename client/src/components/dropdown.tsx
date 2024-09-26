@@ -1,7 +1,11 @@
 import React, { useState } from "react"
 import { FiPlus, FiFolder, FiFilePlus, FiFolderPlus } from "react-icons/fi";
 
-const DropDown = () => {
+interface DropDownProps {
+    onFileUpload: (name: string) => void; // Accept the prop
+}
+
+const DropDown: React.FC<DropDownProps> = ({ onFileUpload }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
@@ -40,6 +44,9 @@ const DropDown = () => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;
         setSelectedFile(file);
+        if (file) {
+            onFileUpload(file.name); // Call the onFileUpload function with the file name
+        }
     };
 
     return (

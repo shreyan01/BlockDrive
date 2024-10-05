@@ -13,40 +13,33 @@ const DropDown: React.FC<DropDownProps> = ({ onFileUpload }) => {
         setIsOpen(!isOpen);
     }
 
-    const handleFileUpload = async (data:any) => {
-      {
+    const handleFileUpload = async () => {
+      if (selectedFile) {
+        const formData = new FormData();
+        formData.append('file', selectedFile);
 
-        const response = await fetch('/api/blob', {
-        
-        method: 'POST',
-        
-        body: data,
-        
-        });
-        
-        
-        
-        
-        if (!response.ok) {
-        
-        throw new Error('Failed to upload to Azure Blob Storage');
-        
+        try {
+          const response = await fetch('/api/blob', {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to upload to Azure Blob Storage');
+          }
+
+          const result = await response.json();
+          console.log(result.message);
+          onFileUpload(selectedFile.name);
+        } catch (error) {
+          console.error('Error uploading file:', error);
         }
-        
-        
-        
-        
-        return response.json();
-        
-        }
-      };
+      }
+    };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;
         setSelectedFile(file);
-        if (file) {
-            onFileUpload(file.name); // Call the onFileUpload function with the file name
-        }
     };
 
     return (

@@ -12,14 +12,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 if (req.method !== 'POST') {
 
-return res.status(405).end();
+return res.status(405).json({ message: 'Method Not Allowed' });
 
 }
 
 // Create the BlobServiceClient object which will be used to create a container client
 
 const blobServiceClient = BlobServiceClient.fromConnectionString(process.env.AZURE_BLOB_STORAGE_CONNECTION_STRING!);
-
+console.log(process.env.AZURE_BLOB_STORAGE_CONNECTION_STRING);
 
 
 
@@ -32,10 +32,9 @@ const containerClient = blobServiceClient.getContainerClient(containerName);
 
 
 
-// Create a blob (file) name
+// Create a unique blob name
 
-const blobName = 'datsilo';
-
+const blobName = `${Date.now()}-${req.body.name}`;
 const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
 
@@ -43,10 +42,12 @@ const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
 // Upload data to the blob
 
-const data = req.body; // Assuming you're sending the data as a buffer or string
-
+const data = req.body;
 const uploadBlobResponse = await blockBlobClient.upload(data, data.length);
 
-res.status(200).send(`Upload block blob ${blobName} successfully: ${uploadBlobResponse.requestId}`);
+res.status(200).json({
+  message: `Upload block blob ${blobName} successfully`,
+  requestId: uploadBlobResponse.requestId
+});
 
 }

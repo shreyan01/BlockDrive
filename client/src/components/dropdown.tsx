@@ -16,7 +16,7 @@ const DropDown: React.FC<DropDownProps> = ({ onFileUpload }) => {
     const handleFileUpload = async () => {
       if (selectedFile) {
         const formData = new FormData();
-        formData.append('file', selectedFile);
+        formData.append('file', selectedFile, selectedFile.name);
 
         try {
           const response = await fetch('/api/blob', {

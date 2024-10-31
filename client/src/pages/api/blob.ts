@@ -1,8 +1,3 @@
-// pages/api/upload.js
-
-
-
-
 import { BlobServiceClient } from '@azure/storage-blob';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IncomingForm, Fields, Files, File } from 'formidable';

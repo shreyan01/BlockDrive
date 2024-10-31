@@ -1,25 +1,29 @@
-import { FaFilePdf, FaFileWord } from 'react-icons/fa';
+import { FaFilePdf, FaFileWord, FaFileImage } from 'react-icons/fa';
 
 export const getFileLogo = (fileName: string): JSX.Element => {
-    const extension = fileName.slice(-4);
+    const extension = fileName.slice(fileName.lastIndexOf('.')).toLowerCase();
   
     switch (extension) {
       case '.doc':
-      case 'docx':
+      case '.docx':
         return <FaFileWord />;
       case '.pdf':
         return <FaFilePdf />;
+      case '.jpg':
+      case '.jpeg':
+      case '.png':
+        return <FaFileImage />;
       default:
-        return <FaFilePdf />; // Assuming default logo is PDF for simplicity
+        return <FaFilePdf />;
     }
 }
 
-const FileTemplate = ({ fileName }: { fileName: string }) => { // Accept fileName as prop
+const FileTemplate = ({ fileName }: { fileName: string }) => {
     const logoSrc = getFileLogo(fileName);
     return (
-        <div className="flex flex-col m-4 p-2 w-1/12 h-1/6 shadow-md">
+        <div className="flex flex-col m-4 p-2 w-32 h-32 shadow-md items-center">
             {logoSrc}
-            <p className="text-sm font-bold">{fileName}</p> {/* Display the file name */}
+            <p className="text-sm font-bold text-center truncate">{fileName}</p>
         </div>
     );
 }
